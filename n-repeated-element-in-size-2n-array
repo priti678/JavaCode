@@ -1,0 +1,63 @@
+Method 1:
+
+class Solution {
+    public int repeatedNTimes(int[] nums) {
+       Arrays.sort(nums);
+        int n = nums.length/2;
+        if(nums[n-1] != nums[n]){
+            if(nums[n-1] == nums[n-2]){
+                return nums[n-1];
+            }else{
+                return nums[n];
+            }
+        }else{
+           return nums[n-1]; 
+        }
+        
+       
+    }
+}
+
+
+
+Method 2:
+
+class Solution {
+    public int repeatedNTimes(int[] nums) {
+       Set<Integer> hash_Set = new HashSet<Integer>();
+         int sumset =0;
+        for(int i=0;i< nums.length;i++){
+            hash_Set.add(nums[i]);
+        }
+        for(Integer k : hash_Set ) {
+            sumset += k;
+        }
+       
+       int sum =0;
+        for(int j=0;j< nums.length;j++){
+            sum += nums[j];
+        }
+        
+        int de = nums.length/2 -1;
+        int num = (sum-sumset)/de;
+        return  num;
+    }
+}
+
+Method 3:
+
+import java.util.Hashtable;
+class Solution {
+    public int repeatedNTimes(int[] nums) {
+     Hashtable<Integer, Integer> ht1 = new Hashtable<>();
+		int repeatElement =0;
+		for ( int i = 0; i < nums.length; i++) {
+			if(!ht1.containsKey(nums[i])) {
+				ht1.put(nums[i], 1);
+			}else {
+				repeatElement = nums[i];
+			}
+		}
+		return repeatElement;
+    }
+}
