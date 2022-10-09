@@ -1,0 +1,28 @@
+class Solution {
+    public int[] frequencySort(int[] nums) {
+       HashMap<Integer, Integer> ht1 = new HashMap<>();
+		int repeatElement =0;
+		for ( int i = 0; i < nums.length; i++) {
+			int count = ht1.containsKey(nums[i]) ? ht1.get(nums[i]) : 0;
+			ht1.put(nums[i], count + 1);
+		}
+		
+		List<Integer> list = new ArrayList<Integer>(ht1.keySet());
+		Collections.sort( list, (a,b) ->{
+			if(ht1.get(a)==ht1.get(b)) {
+				return b-a;
+			}else {
+				return ht1.get(a) - ht1.get(b);
+			}
+		});
+		int result[] = new int[nums.length];
+		int index =0;
+		for (int num : list) {
+			for(int j=0;j<ht1.get(num);j++) {
+				result[index++] = num;
+			}
+			
+		}
+        return result;
+    }
+}
