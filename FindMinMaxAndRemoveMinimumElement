@@ -1,0 +1,45 @@
+package com.practice;
+public class Practice {
+	public static void main(String[] args) {
+		int[] arr = {-14,61,29,-18,59,13,-67,-16,55,-57,7,74};
+		int max = arr[0];
+		int min =arr[0];
+		int indexOfMax = 0;
+		int IndexOfMin =0;
+		if(arr.length == 1) {
+			System.out.println(1);
+		}
+		for(int i = 1;i<arr.length;i++) {
+			if(arr[i]> max) {
+				max = arr[i];
+				indexOfMax = i;
+			}
+			if(arr[i]<min) {
+				min = arr[i];
+				IndexOfMin =i;
+			}
+		}
+		int[] array = new int[3];
+         
+         if(indexOfMax > IndexOfMin) {
+        	 array[0] = IndexOfMin+1 + arr.length - indexOfMax;
+        	 array[1] = indexOfMax+1;
+        	 array[2] = arr.length - IndexOfMin;
+         }else {
+        	 array[0] = indexOfMax+1 + arr.length -IndexOfMin;
+        	 array[1] = IndexOfMin+1;
+        	 array[2] = arr.length - indexOfMax;
+         }
+         int min1 = array[0];
+         
+         for(int i =1;i< array.length;i++) {
+        	 if(array[i]<min1) {
+        		 min1 = array[i];
+        	 }
+         }
+         System.out.println(array[0]);
+         System.out.println(array[1]);
+         System.out.println(array[2]);
+         System.out.println(min1);
+	}
+}
