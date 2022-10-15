@@ -1,0 +1,42 @@
+class Solution {
+    public int minimumDeletions(int[] nums) {
+		int max = nums[0];
+		int min =nums[0];
+		int indexOfMax = 0;
+		int IndexOfMin =0;
+		if(nums.length == 1) {
+			return 1;
+		}
+        
+        for(int i = 1;i<nums.length;i++) {
+			if(nums[i]> max) {
+				max = nums[i];
+				indexOfMax = i;
+			}
+			if(nums[i]<min) {
+				min = nums[i];
+				IndexOfMin =i;
+			}
+		}
+		int[] array = new int[3];
+         
+         if(indexOfMax > IndexOfMin) {
+        	 array[0] = IndexOfMin+1 + nums.length - indexOfMax;
+        	 array[1] = indexOfMax+1;
+        	 array[2] = nums.length - IndexOfMin;
+         }else {
+        	 array[0] = indexOfMax+1 + nums.length -IndexOfMin;
+        	 array[1] = IndexOfMin+1;
+        	 array[2] = nums.length - indexOfMax;
+         }
+         int min1 = array[0];
+         
+         for(int i =1;i< array.length;i++) {
+        	 if(array[i]<min1) {
+        		 min1 = array[i];
+        	 }
+         }
+        
+        return min1;
+    }
+}
